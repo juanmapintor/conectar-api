@@ -488,13 +488,6 @@ CREATE TABLE `zona` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `zona`
---
-
-INSERT INTO `zona` (`zonaID`, `nombre_zona`, `apellido_supervisor`, `nombre_supervisor`, `mail_supervisor`, `telefono_supervisor`) VALUES
-(1, 'Zona 1', 'Vilanova', 'Sandra', 'svilanova@sanjuan.edu.ar', '2644779098');
-
---
 -- Índices para tablas volcadas
 --
 
