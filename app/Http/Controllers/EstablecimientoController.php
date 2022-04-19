@@ -113,7 +113,6 @@ class EstablecimientoController extends Controller
             //Ofertas y Turnos
             'ofertas' => 'required|array|min:1',
             'turnos' => 'required|array|min:1'
-
         ]);
 
         //Chequeamos que existan sector, modalidad, ambito y niveles especificados

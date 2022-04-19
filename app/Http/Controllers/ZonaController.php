@@ -85,7 +85,7 @@ class ZonaController extends Controller
             'nombre_supervisor' => 'required'
         ]);
 
-        $zona->update($request);
+        $zona->update($request->all());
 
         return response($zona, 200);
     }
