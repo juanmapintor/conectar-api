@@ -79,7 +79,7 @@ class OfertaController extends Controller
             'oferta' => 'required|unique:oferta,oferta'
         ]);
 
-        $oferta->update($request);
+        $oferta->update($request->all());
 
         return response($oferta, 200);
     }

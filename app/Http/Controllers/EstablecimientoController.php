@@ -31,7 +31,7 @@ class EstablecimientoController extends Controller
      */
     public function index(): Response
     {
-        $establecimientos = Establecimiento::get();
+        $establecimientos = Establecimiento::paginate(2);
 
         if ($establecimientos->isEmpty()) throw new EmptyException('No hay establecimientos para mostrar');
 
@@ -96,7 +96,7 @@ class EstablecimientoController extends Controller
             'observacion' => 'string',
 
             //Datos correspondientes a Establecimiento
-            'cue' => 'required|string',
+            'cue' => 'required|string|unique:establecimiento,cue',
             'nombre' => 'required|string',
             'sectorID' => 'required|integer',
             'modalidadID' => 'required|integer',
