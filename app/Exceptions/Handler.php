@@ -44,13 +44,13 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->renderable(function (EmptyException $e) {
-            return response($this->infoJSON($e), 404);
+            return response($this->infoJSON($e), 204);
         });
         $this->renderable(function (InvalidCredentialsException $e) {
             return response($this->infoJSON($e), 401);
         });
         $this->renderable(function (InexistentException $e) {
-            return response($this->infoJSON($e), 404);
+            return response($this->infoJSON($e), 204);
         });
     }
 
