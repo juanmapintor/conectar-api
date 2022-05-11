@@ -7,7 +7,7 @@ use App\Http\Controllers\ZonaController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\DomicilioController;
 use App\Http\Controllers\EstablecimientoController;
-use App\Http\Controllers\Loopback;
+use App\Http\Controllers\OpcionesEstablecimientoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +19,6 @@ use App\Http\Controllers\Loopback;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-//Rutas especiales
-Route::post('/loopback', [Loopback::class, 'loopback']);
-
 
 //Rutas de loggeo y registro
 Route::post('/register', [AuthController::class, 'register']);
@@ -59,5 +55,25 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/establecimientos', [EstablecimientoController::class, 'store']);
     Route::put('/establecimientos/{id}', [EstablecimientoController::class, 'update']);
     Route::delete('/establecimientos/{id}', [EstablecimientoController::class, 'destroy']);
+
+    /* 
+     * Rutas de Opciones para Establecimientos:
+     * 
+     * 1 - Turno 
+     * 2 - Sector
+     * 3 - Nivel
+     * 4 - Modalidad
+     * 5 - Ambito 
+     * 
+     * Requieren de rutas especiales para obtenerse como opciones en el proceso de creación de establecimientos. 
+     * No es necesario un ABM completo de estos, ya que se rigen por la Ley de Educación.
+     */
+
+     Route::get('/turno', [OpcionesEstablecimientoController::class, 'indexTurno']);
+     Route::get('/sector', [OpcionesEstablecimientoController::class, 'indexSector']);
+     Route::get('/nivel', [OpcionesEstablecimientoController::class, 'indexNivel']);
+     Route::get('/modalidad', [OpcionesEstablecimientoController::class, 'indexModalidad']);
+     Route::get('/ambito', [OpcionesEstablecimientoController::class, 'indexAmbito']);
+
 
 });
