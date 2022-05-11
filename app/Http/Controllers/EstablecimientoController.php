@@ -31,7 +31,7 @@ class EstablecimientoController extends Controller
      */
     public function index(): Response
     {
-        $establecimientos = Establecimiento::paginate(2);
+        $establecimientos = Establecimiento::paginate(5);
 
         if ($establecimientos->isEmpty()) throw new EmptyException('No hay establecimientos para mostrar');
 
