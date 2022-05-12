@@ -18,7 +18,7 @@ class ZonaController extends Controller
      * @return Response
      * @throws EmptyException
      */
-    public function index() : Response
+    public function indexAll() : Response
     {
         $zonas = Zona::get();
 
@@ -26,7 +26,20 @@ class ZonaController extends Controller
 
         return response($zonas, 200);
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     * @throws EmptyException
+     */
+    public function index() : Response
+    {
+        $zonas = Zona::paginate(5);
 
+        if($zonas->isEmpty()) throw new EmptyException();
+
+        return response($zonas, 200);
+    }
     /**
      * Store a newly created resource in storage.
      *

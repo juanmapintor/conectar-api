@@ -29,7 +29,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/logout', [AuthController::class, 'logout']);
 
     //Rutas de Zonas
-    Route::get('/zonas', [ZonaController::class, 'index']);
+    Route::get('/page/zonas', [ZonaController::class, 'index']);
+    Route::get('/zonas', [ZonaController::class, 'indexAll']);
     Route::get('/zonas/{id}', [ZonaController::class, 'show']);
     Route::post('/zonas', [ZonaController::class, 'store']);
     Route::put('/zonas/{id}', [ZonaController::class, 'update']);
