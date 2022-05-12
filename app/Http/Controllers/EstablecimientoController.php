@@ -94,6 +94,8 @@ class EstablecimientoController extends Controller
             'numero' => 'string',
             'cardinalidad' => 'string',
             'observacion' => 'string',
+            'lat' => 'required|numeric',
+            'lng' => 'required|numeric',
 
             //Datos correspondientes a Establecimiento
             'cue' => 'required|string|unique:establecimiento,cue',
@@ -134,6 +136,8 @@ class EstablecimientoController extends Controller
             'departamento' => $request['departamento'],
             'cod_postal' => $request['cod_postal'],
             'calle' => $request['calle'],
+            'lat' => $request['lat'],
+            'lng' => $request['lng'],
             'localidad' => !$request['localidad'] ? null : $request['localidad'],
             'barrio' => !$request['barrio'] ? null : $request['barrio'],
             'numero' => !$request['numero'] ? null : $request['numero'],

@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $calle
  * @property string $numero
  * @property string $cardinalidad
+ * @property float $lat
+ * @property float $lng
  * @property string $observacion
  * @property Establecimiento $establecimiento
  */
@@ -37,7 +39,7 @@ class Domicilio extends Model
     /**
      * @var array
      */
-    protected $fillable = ['provincia', 'departamento', 'cod_postal', 'localidad', 'barrio', 'calle', 'numero', 'cardinalidad', 'observacion'];
+    protected $fillable = ['provincia', 'departamento', 'cod_postal', 'localidad', 'barrio', 'calle', 'numero', 'cardinalidad', 'lat', 'lng', 'observacion'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
