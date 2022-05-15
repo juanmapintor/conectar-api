@@ -15,7 +15,7 @@ class CreateDispositivoEstadoTable extends Migration
     {
         Schema::create('dispositivo_estado', function (Blueprint $table) {
             $table->integer('dispositivoEstadoID')->primary();
-            $table->dateTime('fecha_hora')->default('current_timestamp()');
+            $table->dateTime('fecha_hora')->useCurrent();
             $table->text('observacion');
             $table->integer('estadoID');
             $table->integer('dispositivoID');

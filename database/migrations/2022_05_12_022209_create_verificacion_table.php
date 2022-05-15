@@ -15,7 +15,7 @@ class CreateVerificacionTable extends Migration
     {
         Schema::create('verificacion', function (Blueprint $table) {
             $table->integer('verificacionID')->primary();
-            $table->dateTime('fecha_hora')->default('current_timestamp()');
+            $table->dateTime('fecha_hora')->useCurrent();
             $table->text('observacion');
             $table->integer('apto');
             $table->integer('dispositivoID');
