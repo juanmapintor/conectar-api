@@ -85,7 +85,7 @@ class DomicilioController extends Controller
             'calle' => 'required|string'
         ]);
 
-        $domicilio->update($request);
+        $domicilio->update($request->all());
 
         return response($domicilio, 200);
     }
