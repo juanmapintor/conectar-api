@@ -20,6 +20,21 @@ class OfertaController extends Controller
      */
     public function index() : Response
     {
+        $ofertas = Oferta::paginate(5);
+
+        if($ofertas->isEmpty()) throw new EmptyException();
+
+        return response($ofertas, 200);
+    }
+
+        /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     * @throws EmptyException
+     */
+    public function indexAll() : Response
+    {
         $ofertas = Oferta::get();
 
         if($ofertas->isEmpty()) throw new EmptyException();

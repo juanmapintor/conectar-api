@@ -39,6 +39,21 @@ class EstablecimientoController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     * @throws EmptyException
+     */
+    public function indexAll(): Response
+    {
+        $establecimientos = Establecimiento::get();
+
+        if ($establecimientos->isEmpty()) throw new EmptyException('No hay establecimientos para mostrar');
+
+        return response($establecimientos, 200);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param int $id
@@ -374,7 +389,7 @@ class EstablecimientoController extends Controller
         $establecimiento = Establecimiento::find($id);
         if (!$establecimiento) throw new InexistentException('El establecimiento solicitado no existe');
 
-        //Limpiamos telefonos, ofertas y turnos
+        //BORRAMOS telefonos, y LIMPIAMOS ofertas y turnos
         Telefonoestablecimiento::where('establecimientoID', $establecimiento['establecimientoID'])->delete();
         $establecimiento->turnos()->detach();
         $establecimiento->ofertas()->detach();

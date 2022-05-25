@@ -37,7 +37,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/zonas/{id}', [ZonaController::class, 'destroy']);
 
     //Rutas de Ofertas
-    Route::get('/ofertas', [OfertaController::class, 'index']);
+    Route::get('/page/ofertas', [OfertaController::class, 'index']);
+    Route::get('/ofertas', [OfertaController::class, 'indexAll']);
     Route::get('/ofertas/{id}', [OfertaController::class, 'show']);
     Route::post('/ofertas', [OfertaController::class, 'store']);
     Route::put('/ofertas/{id}', [OfertaController::class, 'update']);
@@ -51,7 +52,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/domicilios/{id}', [DomicilioController::class, 'destroy']);
 
     //Rutas de Establecimientos
-    Route::get('/establecimientos', [EstablecimientoController::class, 'index']);
+    Route::get('/page/establecimientos', [EstablecimientoController::class, 'index']);
+    Route::get('/establecimientos', [EstablecimientoController::class, 'indexAll']);
     Route::get('/establecimientos/{id}', [EstablecimientoController::class, 'show']);
     Route::post('/establecimientos', [EstablecimientoController::class, 'store']);
     Route::put('/establecimientos/{id}', [EstablecimientoController::class, 'update']);
@@ -70,11 +72,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
      * No es necesario un ABM completo de estos, ya que se rigen por la Ley de Educación.
      */
 
-     Route::get('/turno', [OpcionesEstablecimientoController::class, 'indexTurno']);
-     Route::get('/sector', [OpcionesEstablecimientoController::class, 'indexSector']);
-     Route::get('/nivel', [OpcionesEstablecimientoController::class, 'indexNivel']);
-     Route::get('/modalidad', [OpcionesEstablecimientoController::class, 'indexModalidad']);
-     Route::get('/ambito', [OpcionesEstablecimientoController::class, 'indexAmbito']);
-
-
+    Route::get('/turno', [OpcionesEstablecimientoController::class, 'indexTurno']);
+    Route::get('/sector', [OpcionesEstablecimientoController::class, 'indexSector']);
+    Route::get('/nivel', [OpcionesEstablecimientoController::class, 'indexNivel']);
+    Route::get('/modalidad', [OpcionesEstablecimientoController::class, 'indexModalidad']);
+    Route::get('/ambito', [OpcionesEstablecimientoController::class, 'indexAmbito']);
 });
