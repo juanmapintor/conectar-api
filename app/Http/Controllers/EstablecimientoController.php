@@ -261,6 +261,19 @@ class EstablecimientoController extends Controller
         if (!$establecimiento) throw new InexistentException('El establecimiento solicitado para editar no existe');
 
         $request->validate([
+            //Datos correspondientes a Domicilio
+            'provincia' => 'required|string',
+            'departamento' => 'required|string',
+            'cod_postal' => 'required|string',
+            'calle' => 'required|string',
+            'localidad' => 'string',
+            'barrio' => 'string',
+            'numero' => 'string',
+            'cardinalidad' => 'string',
+            'observacion' => 'string',
+            'lat' => 'required|numeric',
+            'lng' => 'required|numeric',
+
             //Datos correspondientes a Establecimiento
             'cue' => 'required|string',
             'nombre' => 'required|string',
@@ -309,6 +322,25 @@ class EstablecimientoController extends Controller
         ];
 
         $establecimiento->update($fieldsEstablecimiento);
+
+        //Actualizamos el domicilio.
+        $fieldsDomicilio = [
+            'provincia' => $request['provincia'],
+            'departamento' => $request['departamento'],
+            'cod_postal' => $request['cod_postal'],
+            'calle' => $request['calle'],
+            'lat' => $request['lat'],
+            'lng' => $request['lng'],
+            'localidad' => !$request['localidad'] ? null : $request['localidad'],
+            'barrio' => !$request['barrio'] ? null : $request['barrio'],
+            'numero' => !$request['numero'] ? null : $request['numero'],
+            'cardinalidad' => !$request['cardinalidad'] ? null : $request['cardinalidad'],
+            'observacion' => !$request['observacion'] ? null : $request['observacion'],
+        ];
+
+        $domicilio = $establecimiento->domicilio;
+
+        $domicilio->update($fieldsDomicilio);
 
         //Limpiamos los telefonos.
         Telefonoestablecimiento::where('establecimientoID', $establecimiento['establecimientoID'])->delete();

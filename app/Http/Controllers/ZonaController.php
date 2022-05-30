@@ -93,7 +93,7 @@ class ZonaController extends Controller
         if(!$zona) throw new InexistentException('La zona solicitada para editar no existe');
 
         $request->validate([
-            'nombre_zona' => 'required|unique:zona,nombre_zona',
+            'nombre_zona' => 'required',
             'apellido_supervisor' => 'required',
             'nombre_supervisor' => 'required'
         ]);

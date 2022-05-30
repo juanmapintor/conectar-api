@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -51,6 +52,9 @@ class Handler extends ExceptionHandler
         });
         $this->renderable(function (InexistentException $e) {
             return response($this->infoJSON($e), 204);
+        });
+        $this->renderable(function (QueryException $e){
+            return response($this->infoJSON($e), 422);
         });
     }
 
