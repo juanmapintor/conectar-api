@@ -21,7 +21,7 @@ use App\Http\Controllers\OpcionesEstablecimientoController;
 */
 
 //Rutas de loggeo y registro
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/reg', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
